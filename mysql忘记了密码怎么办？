@@ -1,0 +1,10 @@
+	mysql忘记了密码有三种解决方法：
+  （1）
+      在命令行运行：taskkill /f /im mysqld-nt.exe
+      继续在命令行运行：mysqld-nt --skip-grant-tables
+  （2）
+      只看密码：select host,user,password from mysql.user;
+      修改密码：update mysql.user set password='改后的密码' where user='root';
+  （3）
+      命令行输入net stop mysql关闭mysql服务，命令行进入mysql中bin所在目录，输入mysqld --skip-grant-tables，打开另一个命令窗口，输入mysql，输入use mysql;
+      输入update user set password=password('新密码') where user='root' and host='localhost';
